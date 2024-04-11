@@ -1,16 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.moje_wydatki.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-  <Label fx:id="welcomeText"/>
-  <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0">
+         <children>
+            <ImageView fitHeight="600.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@AdobeStock_323643497.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="97.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+               <image>
+                  <Image url="@ssmvtnogc7ue0jufjd03h6mj89.png" />
+               </image>
+            </ImageView>
+            <AnchorPane prefHeight="600.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="59.0" layoutY="166.0" text="Witaj !" textFill="WHITE" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="166.0">
+                     <font>
+                        <Font name="American Typewriter Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="20.0" layoutY="275.0" />
+                  <Label layoutX="41.0" layoutY="234.0" text="Nazwa użytkownika" textFill="WHITE" AnchorPane.leftAnchor="30.0">
+                     <font>
+                        <Font name="American Typewriter Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="71.0" layoutY="392.0" mnemonicParsing="false" text="Zaloguj" AnchorPane.leftAnchor="70.0">
+                     <font>
+                        <Font name="American Typewriter Bold" size="13.0" />
+                     </font></Button>
+                  <PasswordField layoutX="20.0" layoutY="351.0" />
+                  <Label layoutX="70.0" layoutY="316.0" text="Hasło" textFill="WHITE" AnchorPane.leftAnchor="80.0">
+                     <font>
+                        <Font name="American Typewriter Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="166.0" lightOn="true" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="200.0" prefHeight="600.0" prefWidth="1000.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
