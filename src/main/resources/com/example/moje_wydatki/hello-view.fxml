@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.AmbientLight?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -11,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moje_wydatki.LoginController">
    <children>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0">
          <children>
@@ -25,33 +24,41 @@
                   <Image url="@ssmvtnogc7ue0jufjd03h6mj89.png" />
                </image>
             </ImageView>
-            <AnchorPane prefHeight="600.0" prefWidth="200.0">
+            <AnchorPane layoutX="-1.0" layoutY="13.0" prefHeight="600.0" prefWidth="300.0">
                <children>
                   <Label layoutX="59.0" layoutY="166.0" text="Witaj !" textFill="WHITE" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="166.0">
                      <font>
                         <Font name="American Typewriter Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="20.0" layoutY="275.0" />
+                  <TextField fx:id="usernameTextField" layoutX="20.0" layoutY="275.0" />
                   <Label layoutX="41.0" layoutY="234.0" text="Nazwa użytkownika" textFill="WHITE" AnchorPane.leftAnchor="30.0">
                      <font>
                         <Font name="American Typewriter Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Button layoutX="71.0" layoutY="392.0" mnemonicParsing="false" text="Zaloguj" AnchorPane.leftAnchor="70.0">
+                  <Button layoutX="71.0" layoutY="392.0" mnemonicParsing="false" onAction="#LoginButtonOnAction" text="Zaloguj" AnchorPane.leftAnchor="70.0">
                      <font>
                         <Font name="American Typewriter Bold" size="13.0" />
-                     </font></Button>
-                  <PasswordField layoutX="20.0" layoutY="351.0" />
+                     </font>
+                  </Button>
+                  <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="351.0" />
                   <Label layoutX="70.0" layoutY="316.0" text="Hasło" textFill="WHITE" AnchorPane.leftAnchor="80.0">
                      <font>
                         <Font name="American Typewriter Bold" size="14.0" />
                      </font>
                   </Label>
-                  <AmbientLight color="CHARTREUSE" layoutX="135.0" layoutY="166.0" lightOn="true" />
+                  <Label fx:id="loginMessageLabel" layoutX="30.0" layoutY="432.0" onInputMethodTextChanged="#LoginButtonOnAction" prefHeight="25.0" prefWidth="250.0" textFill="RED" AnchorPane.leftAnchor="30.0">
+                     <font>
+                        <Font name="American Typewriter Bold" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="200.0" prefHeight="600.0" prefWidth="1000.0" />
+            <AnchorPane layoutX="299.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="299.0">
+               <children>
+                  <Button fx:id="exit_button" layoutX="925.0" layoutY="14.0" mnemonicParsing="false" onAction="#exit_buttonOnAction" text="Wyjście" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+               </children></AnchorPane>
          </children>
       </AnchorPane>
    </children>
