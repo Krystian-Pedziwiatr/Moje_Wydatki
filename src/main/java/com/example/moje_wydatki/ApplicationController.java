@@ -42,6 +42,31 @@ public class ApplicationController extends javafx.application.Application {
 
     }
 
+    public void switchToBudgetScene(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent pane = loader.load();
+
+        // Ustawienie kontrolera
+        BudgetController budgetController = loader.getController();
+        budgetController.setMain(this);
+
+        stg.getScene().setRoot(pane);
+        stg.setTitle("Moje wydatki");
+    }
+
+    public void switchToMyWalletScene(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        Parent pane = loader.load();
+
+        // Ustawienie kontrolera
+        MywalletController mywalletController = loader.getController();
+        mywalletController.setMain(this);
+
+        stg.getScene().setRoot(pane);
+        stg.setTitle("Moje wydatki");
+    }
+
+
 
 
     public static void main(String[] args) {

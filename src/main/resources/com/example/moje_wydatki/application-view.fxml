@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moje_wydatki.ViewController">
     <children>
@@ -40,7 +41,7 @@
                   <VBox prefHeight="540.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                      <children>
                         <Separator prefWidth="200.0" />
-                        <Label fx:id="mywallet" prefHeight="40.0" prefWidth="235.0" styleClass="selected" stylesheets="@css/styles.css" text="Mój portfel">
+                        <Label fx:id="mywallet" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Mój portfel">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -48,7 +49,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
+                        <Label fx:id="budget" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -83,7 +84,44 @@
                <center>
                   <VBox prefHeight="200.0" prefWidth="100.0" styleClass="main" stylesheets="@css/styles.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Label prefHeight="112.0" prefWidth="335.0" />
+                        <VBox prefHeight="539.0" prefWidth="966.0">
+                           <children>
+                              <Label fx:id="welcome" alignment="CENTER" prefHeight="210.0" prefWidth="970.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Lao MN Bold" size="24.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding></Label>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="268.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/AdobeStock_172201198.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="268.0" fitWidth="320.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/AdobeStock_172201198.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="268.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@img/AdobeStock_172201198.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Zrobić budżet to wskazać swoim pieniądzom, dokąd mają iść, zamiast się zastanawiać, gdzie się rozeszły.&#10;JOHN C. MAXWELL" textAlignment="CENTER" wrappingWidth="931.3609619140625">
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="10.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Bangla MN" size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
                      </children></VBox>
                </center>
             </BorderPane>

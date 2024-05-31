@@ -47,7 +47,7 @@
                   <VBox prefHeight="540.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                      <children>
                         <Separator prefWidth="200.0" />
-                         <Label fx:id="mywallet" prefHeight="40.0" prefWidth="235.0" styleClass="selected" stylesheets="@css/styles.css" text="Mój portfel">
+                         <Label fx:id="mywallet" onMouseClicked="#MyWalletOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="selected" stylesheets="@css/styles.css" text="Mój portfel">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
+                        <Label fx:id="budget" onMouseClicked="#budgetOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -94,7 +94,7 @@
                            <children>
                               <VBox prefHeight="589.0" prefWidth="964.0">
                                  <children>
-                                    <LineChart fx:id="barChart" legendSide="TOP" stylesheets="@css/styles.css" title="Stan Portfela">
+                                    <LineChart fx:id="barChart" legendSide="TOP" prefHeight="400.0" prefWidth="558.0" stylesheets="@css/styles.css" title="Stan Portfela">
                                       <xAxis>
                                         <CategoryAxis label="Miesiące" side="BOTTOM" />
                                       </xAxis>
@@ -103,9 +103,9 @@
                                       </yAxis>
                                     </LineChart>
             
-                                          <Label fx:id="Amount_wallet" alignment="CENTER" contentDisplay="CENTER" textAlignment="CENTER">
+                                          <Label fx:id="Amount_wallet" alignment="CENTER" contentDisplay="CENTER" stylesheets="@css/styles.css" textAlignment="CENTER">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="System Bold" size="14.0" />
                                        </font>
                                        <padding>
                                           <Insets bottom="10.0" left="50.0" top="10.0" />
@@ -119,7 +119,7 @@
                                           <Font name="Lao MN" size="13.0" />
                                        </font>
                                     </Text>
-                                    <TextField maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
+                                    <TextField fx:id="Amount" maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
                                        <VBox.margin>
                                           <Insets left="50.0" top="10.0" />
                                        </VBox.margin>
@@ -127,12 +127,12 @@
                                           <Insets />
                                        </opaqueInsets>
                                     </TextField>
-                                    <Button mnemonicParsing="false" text="Dodaj">
+                                    <Button fx:id="SaveAmount" mnemonicParsing="false" onAction="#SaveAmountOnClick" text="Dodaj">
                                        <VBox.margin>
                                           <Insets left="50.0" top="10.0" />
                                        </VBox.margin>
                                     </Button>
-                                    <Label fx:id="Error_label">
+                                    <Label fx:id="status_label">
                                        <padding>
                                           <Insets bottom="10.0" left="50.0" top="10.0" />
                                        </padding>

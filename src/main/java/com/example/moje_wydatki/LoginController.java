@@ -12,7 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import static com.example.moje_wydatki.ApplicationController.*;
+
 
 public class LoginController {
 
