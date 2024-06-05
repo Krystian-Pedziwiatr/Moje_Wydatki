@@ -5,6 +5,7 @@ module com.example.moje_wydatki {
     requires com.dlsc.formsfx;
     requires java.sql;
     requires mysql.connector.j;
+    requires org.apache.poi.ooxml;
 
     opens com.example.moje_wydatki to javafx.fxml;
     exports com.example.moje_wydatki;

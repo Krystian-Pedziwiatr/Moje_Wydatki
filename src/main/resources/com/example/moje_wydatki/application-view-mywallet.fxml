@@ -4,20 +4,19 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moje_wydatki.MywalletController">
     <children>
@@ -40,6 +39,15 @@
                               <Font name="Lao MN Bold" size="24.0" />
                            </font>
                         </Label>
+                        <Pane prefHeight="60.0" prefWidth="968.0">
+                           <children>
+                              <Label fx:id="Amount_wallet" layoutX="803.0" layoutY="14.0" prefHeight="32.0" prefWidth="160.0" stylesheets="@css/styles.css">
+                                 <font>
+                                    <Font name="Lao MN Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
                      </children>
                   </HBox>
                </top>
@@ -63,7 +71,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
+                        <Label layoutX="10.0" layoutY="50.0" onMouseClicked="#ExpensesOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -71,7 +79,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
+                        <Label layoutX="10.0" layoutY="90.0" onMouseClicked="#SettingsOnClick" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -92,9 +100,9 @@
                     <content>
                       <AnchorPane>
                            <children>
-                              <VBox prefHeight="589.0" prefWidth="964.0">
+                              <Pane prefHeight="523.0" prefWidth="950.0">
                                  <children>
-                                    <LineChart fx:id="barChart" legendSide="TOP" prefHeight="400.0" prefWidth="558.0" stylesheets="@css/styles.css" title="Stan Portfela">
+                                    <LineChart fx:id="barChart" legendSide="TOP" prefHeight="378.0" prefWidth="500.0" stylesheets="@css/styles.css">
                                       <xAxis>
                                         <CategoryAxis label="Miesiące" side="BOTTOM" />
                                       </xAxis>
@@ -103,42 +111,27 @@
                                       </yAxis>
                                     </LineChart>
             
-                                          <Label fx:id="Amount_wallet" alignment="CENTER" contentDisplay="CENTER" stylesheets="@css/styles.css" textAlignment="CENTER">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
+
+                                    <PieChart fx:id="pieChart" layoutX="491.0" layoutY="7.0" prefHeight="350.0" prefWidth="453.0" />
+                                    <Label fx:id="status_label" layoutX="14.0" layoutY="416.0" prefHeight="44.0" prefWidth="483.0">
                                        <padding>
-                                          <Insets bottom="10.0" left="50.0" top="10.0" />
+                                          <Insets bottom="10.0" left="20.0" top="10.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="Lao MN Bold" size="16.0" />
+                                       </font>
                                     </Label>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Dodaj wydatek lub przychód króry zostanie dodany do bieżącego miesiąca">
-                                       <VBox.margin>
-                                          <Insets left="50.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="Lao MN" size="13.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="Amount" maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
-                                       <VBox.margin>
-                                          <Insets left="50.0" top="10.0" />
-                                       </VBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </TextField>
-                                    <Button fx:id="SaveAmount" mnemonicParsing="false" onAction="#SaveAmountOnClick" text="Dodaj">
-                                       <VBox.margin>
-                                          <Insets left="50.0" top="10.0" />
-                                       </VBox.margin>
-                                    </Button>
-                                    <Label fx:id="status_label">
+                                    <Separator layoutX="-5.0" layoutY="380.0" prefHeight="4.0" prefWidth="959.0" />
+                                    <Label fx:id="status_label1" layoutX="14.0" layoutY="460.0" prefHeight="44.0" prefWidth="483.0">
                                        <padding>
-                                          <Insets bottom="10.0" left="50.0" top="10.0" />
+                                          <Insets bottom="10.0" left="20.0" top="10.0" />
                                        </padding>
+                                       <font>
+                                          <Font name="Lao MN Bold" size="16.0" />
+                                       </font>
                                     </Label>
                                  </children>
-                              </VBox>
+                              </Pane>
                            </children>
                         </AnchorPane>
                     </content>

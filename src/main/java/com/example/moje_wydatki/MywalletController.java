@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,21 +30,16 @@ public class MywalletController implements Initializable {
 
         private ApplicationController Main;
 
-        public void setMain(ApplicationController main) {
-            this.Main = main;
-        }
+
+
         @FXML
         private LineChart<String, Number> barChart;
 
         @FXML
-        private Label Amount_wallet;
+        private Label Amount_wallet, status_label;
 
         @FXML
-        private Label status_label;
-
-
-        @FXML
-        private TextField Amount;
+        private PieChart pieChart;
 
 
 
@@ -58,6 +54,10 @@ public class MywalletController implements Initializable {
         public void initialize(URL url, ResourceBundle rb) {
 
             Main = new ApplicationController();
+
+            loadPieChartData();
+            Amount_wallet.setText("Stan portfela: " + getTotalAmountForUser(userId) + "zł");
+            status_label.setText("Miesięczny bilnas twojego porfela to: " + monthlyBalance() + "zł");
             //Tworzenie połączenia z bazą danych
             ConnectionClass connectionClass = new ConnectionClass();
             Connection connection = connectionClass.getConnection();
@@ -65,19 +65,17 @@ public class MywalletController implements Initializable {
             String query = "SELECT DATE_FORMAT(date, '%Y-%m') AS month, SUM(amount) AS total_amount  FROM income_money  WHERE id_user = ?  GROUP BY month  ORDER BY month ";
 
 
-
-
             // Tworzenie serii danych
             XYChart.Series<String, Number> series = new XYChart.Series<>();
-            series.setName("Suma pieniędzy w PLN");
+            series.setName("Przychody");
 
             try {
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setInt(1, userId);
                 ResultSet resultSet = statement.executeQuery();
 
-                double sumAmount = getTotalAmountForUser(userId);
-                Amount_wallet.setText("Twój obecny stan porfela to: " + sumAmount);
+
+
 
                 while (resultSet.next()) {
 
@@ -92,6 +90,7 @@ public class MywalletController implements Initializable {
 
                 barChart.getData().add(series);
 
+
                 resultSet.close();
                 statement.close();
                 connection.close();
@@ -101,29 +100,97 @@ public class MywalletController implements Initializable {
 
 
 
+
+
         }
 
     // Metoda, która oblicza łączną kwotę dla danego użytkownika
     public double getTotalAmountForUser(int userId) {
 
-        double totalAmount = 0;
 
         //Tworzenie zapytania SQL
-        String query2 = "SELECT SUM(amount) AS total_amount FROM income_money WHERE id_user = ?";
+        String query = "SELECT " +
+                "(SELECT (SUM(amount)) FROM income_money WHERE id_user = ?) AS total_income, " +
+                "(SELECT (SUM(amount)) FROM expenses WHERE id_user = ?) AS total_expenses";
 
+
+        double totalBalance = 0;
         try {
-            PreparedStatement statement = connection.prepareStatement(query2);
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, userId);
+            statement.setInt(2, userId);
             ResultSet resultSet = statement.executeQuery();
 
 
             if (resultSet.next()) {
 
-                totalAmount = resultSet.getDouble("total_amount");
+                double totalIncome = resultSet.getDouble("total_income");
+                double totalExpenses = resultSet.getDouble("total_expenses");
+                totalBalance = totalIncome - totalExpenses;
 
             }
 
 
+            resultSet.close();
+            statement.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return totalBalance;
+    }
+
+
+    @FXML
+    public void loadPieChartData(){
+
+            String query = "SELECT category, SUM(amount) AS total_amount FROM expenses WHERE id_user = ? GROUP BY category;";
+
+            try {
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setInt(1, userId);
+                ResultSet resultSet = statement.executeQuery();
+
+                while (resultSet.next()){
+                    String category = resultSet.getString("category");
+                    Double totalAmount = resultSet.getDouble("total_amount");
+
+                    PieChart.Data slice = new PieChart.Data(category, totalAmount);
+                    pieChart.getData().add(slice);
+                    pieChart.setTitle("Wydatki");
+                }
+
+                resultSet.close();
+                statement.close();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+
+            }
+    }
+
+    private double monthlyBalance(){
+
+        double totalIncome = 0;
+        double totalExpenses = 0;
+        double totalMonthly = 0;
+
+        // Tworzenie zapytania SQL, aby obliczyć sumy dla bieżącego miesiąca
+        String query = "SELECT " +
+                "(SELECT SUM(amount) FROM income_money WHERE id_user = ? AND MONTH(DATE) = MONTH(CURRENT_DATE()) AND YEAR(DATE) = YEAR(CURRENT_DATE())) AS total_income, " +
+                "(SELECT SUM(amount) FROM expenses WHERE id_user = ? AND MONTH(DATE) = MONTH(CURRENT_DATE()) AND YEAR(DATE) = YEAR(CURRENT_DATE())) AS total_expenses";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            statement.setInt(2, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalIncome = resultSet.getDouble("total_income");
+                totalExpenses = resultSet.getDouble("total_expenses");
+                totalMonthly = totalIncome - totalExpenses;
+            }
 
             resultSet.close();
             statement.close();
@@ -131,69 +198,82 @@ public class MywalletController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return totalAmount;
+
+        return totalMonthly;
     }
 
-    @FXML
-    public void SaveAmountOnClick(ActionEvent event) {
+    private double mostSpent(){
 
-            String amount = Amount.getText();
+        double totalIncome = 0;
+        double totalExpenses = 0;
+        double totalMonthly = 0;
 
-        //Tworzenie połączenia z bazą danych
-        ConnectionClass connectionClass = new ConnectionClass();
-        Connection connection = connectionClass.getConnection();
-            if(amount.isEmpty()){
-                status_label.setText("Wpisz kwotę");
-                return;
-            }
-            double UserAmount;
-
-            try{
-                UserAmount = Double.parseDouble(amount);
-            }
-            catch (NumberFormatException e){
-                status_label.setText("Wprowadź poprawną kwotę");
-                return ;
-            }
-
-        String query = "INSERT INTO income_money (id_user, amount, date) VALUES (?, ?, CURDATE())";
-
-        try{ PreparedStatement statement = connection.prepareStatement(query);
-                statement.setInt(1, userId);
-                statement.setDouble(2, UserAmount);
-                statement.executeUpdate();
-                status_label.setText("Poprawnie wprowadzono kwotę do bazy danych!");
-                
-            }
-            catch (Exception e){
-                e.printStackTrace();
-                status_label.setText("Bląd zapisu!");
-            }
-
-    }
-
-    public void budgetOnClick(MouseEvent event) {
-
+        // Tworzenie zapytania SQL, aby obliczyć sumy dla bieżącego miesiąca
+        String query = "SELECT " +
+                "(SELECT SUM(amount) FROM income_money WHERE id_user = ? AND MONTH(DATE) = MONTH(CURRENT_DATE()) AND YEAR(DATE) = YEAR(CURRENT_DATE())) AS total_income, " +
+                "(SELECT SUM(amount) FROM expenses WHERE id_user = ? AND MONTH(DATE) = MONTH(CURRENT_DATE()) AND YEAR(DATE) = YEAR(CURRENT_DATE())) AS total_expenses";
 
         try {
-            Main.switchToBudgetScene("application-view-budget.fxml");
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            statement.setInt(2, userId);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                totalIncome = resultSet.getDouble("total_income");
+                totalExpenses = resultSet.getDouble("total_expenses");
+                totalMonthly = totalIncome - totalExpenses;
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return totalMonthly;
+    }
+
+
+
+    @FXML
+    public void budgetOnClick(MouseEvent event) {
+
+        try {
+            Main.switchToMainScene("application-view-budget.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
+    @FXML
     public void MyWalletOnClick(MouseEvent event) {
 
-
-            Main = new ApplicationController();
-
-
         try {
-            Main.switchToMyWalletScene("application-view-mywallet.fxml");
+            Main.switchToMainScene("application-view-mywallet.fxml");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
 
+    @FXML
+    public void ExpensesOnClick(MouseEvent event) {
+
+        try {
+            Main.switchToMainScene("application-view-expenses.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void SettingsOnClick(MouseEvent event) {
+
+        try {
+            Main.switchToMainScene("application-view-settings.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

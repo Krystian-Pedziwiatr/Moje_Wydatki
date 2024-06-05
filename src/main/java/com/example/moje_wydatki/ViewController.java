@@ -19,14 +19,9 @@ import javafx.fxml.FXML;
 
 public class ViewController {
 
-        @FXML
-        private Label mywallet;
 
         @FXML
         private Label welcome;
-
-        @FXML
-        private Label budget;
 
         private int userId;
         private Connection connection;
@@ -61,8 +56,6 @@ public class ViewController {
                         e.printStackTrace();
                 }
 
-                mywallet.setOnMouseClicked(this::handleLabelClickMyWallet);
-                budget.setOnMouseClicked(this::handleLabelClickBudget);
 
         }
         public void handleLabelClickMyWallet(MouseEvent event) {
@@ -81,6 +74,24 @@ public class ViewController {
                         e.printStackTrace();
                 }
         }
+
+        public void handleLabelClickExpenses(MouseEvent event){
+                try {
+                        Main.switchToMainScene("application-view-expenses.fxml");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+        }
+
+        public void handleLabelClickSettings(MouseEvent event){
+                try {
+                        Main.switchToMainScene("application-view-settings.fxml");
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+        }
+
+
 
 
 

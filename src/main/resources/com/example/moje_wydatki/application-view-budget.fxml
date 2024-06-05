@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
@@ -11,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -37,6 +39,16 @@
                                         <Font name="Lao MN Bold" size="24.0" />
                                     </font>
                                 </Label>
+                        <Pane prefHeight="60.0" prefWidth="973.0">
+                            <children>
+                                <Label fx:id="Amount_wallet" layoutX="803.0" layoutY="14.0" prefHeight="32.0" prefWidth="160.0" stylesheets="@css/styles.css">
+                                    <font>
+                                        <Font name="Lao MN Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                            </children>
+
+                        </Pane>
                             </children>
                         </HBox>
                     </top>
@@ -44,7 +56,7 @@
                         <VBox prefHeight="540.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                             <children>
                                 <Separator prefWidth="200.0" />
-                                <Label fx:id="mywallet" onMouseClicked="#MyWalletOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="selected" stylesheets="@css/styles.css" text="Mój portfel">
+                                <Label fx:id="mywallet" onMouseClicked="#MyWalletOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Mój portfel">
                                     <font>
                                         <Font name="Lao MN" size="18.0" />
                                     </font>
@@ -52,7 +64,7 @@
                                         <Insets left="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label fx:id="budget" onMouseClicked="#budgetOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
+                                <Label fx:id="budget" onMouseClicked="#budgetOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="selected" stylesheets="@css/styles.css" text="Budżet">
                                     <font>
                                         <Font name="Lao MN" size="18.0" />
                                     </font>
@@ -60,7 +72,7 @@
                                         <Insets left="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
+                                <Label layoutX="10.0" layoutY="50.0" onMouseClicked="#ExpensesOnClick" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
                                     <font>
                                         <Font name="Lao MN" size="18.0" />
                                     </font>
@@ -68,7 +80,7 @@
                                         <Insets left="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
+                                <Label layoutX="10.0" layoutY="90.0" onMouseClicked="#SettingsOnClick" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
                                     <font>
                                         <Font name="Lao MN" size="18.0" />
                                     </font>
@@ -89,18 +101,44 @@
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <VBox prefHeight="589.0" prefWidth="964.0">
+                                        <VBox onMouseClicked="#ExpensesOnClick" prefHeight="589.0" prefWidth="964.0">
                                             <children>
-
-                                                <Label fx:id="Amount_wallet" alignment="CENTER" contentDisplay="CENTER" stylesheets="@css/styles.css" textAlignment="CENTER">
-                                                    <font>
-                                                        <Font name="System Bold" size="14.0" />
-                                                    </font>
+                                    <Label text="Uzupełnij swój budżet lub po prostu dodaj pieniądze do swojego portfela." textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Lao MN Bold" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="20.0" left="250.0" top="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Separator prefWidth="200.0" />
+                                                <Label fx:id="status_label">
                                                     <padding>
                                                         <Insets bottom="10.0" left="50.0" top="10.0" />
                                                     </padding>
                                                 </Label>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj kwotę króra zostanie dodana do twojego budżetu">
+                                    <Text layoutX="60.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zapisz swój obecny dochód na miesiąc">
+                                       <font>
+                                          <Font name="Lao MN" size="13.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="50.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <TextField fx:id="monthly_amount" layoutX="60.0" layoutY="144.0" maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <VBox.margin>
+                                          <Insets left="50.0" top="10.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Button fx:id="SaveAmount1" layoutX="60.0" layoutY="210.0" mnemonicParsing="false" onAction="#SaveMonthlyAmount" text="Dodaj">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="50.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Podaj wolną kwotę króra zostanie dodana do twojego portfela">
                                                     <VBox.margin>
                                                         <Insets left="50.0" />
                                                     </VBox.margin>
@@ -108,7 +146,7 @@
                                                         <Font name="Lao MN" size="13.0" />
                                                     </font>
                                                 </Text>
-                                                <TextField fx:id="Amount" maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
+                                                <TextField fx:id="Amount1" maxWidth="100.0" prefWidth="50.0" promptText="Podaj kwotę">
                                                     <VBox.margin>
                                                         <Insets left="50.0" top="10.0" />
                                                     </VBox.margin>
@@ -121,11 +159,30 @@
                                                         <Insets left="50.0" top="10.0" />
                                                     </VBox.margin>
                                                 </Button>
-                                                <Label fx:id="status_label">
-                                                    <padding>
-                                                        <Insets bottom="10.0" left="50.0" top="10.0" />
-                                                    </padding>
-                                                </Label>
+                                    <Label text="Generuj statystykę dochodów ">
+                                       <VBox.margin>
+                                          <Insets left="50.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="Lao MN" size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
+                                    </Label>
+                                    <Button fx:id="saveRaport" mnemonicParsing="false" onAction="#SaveBudgetRaport" text="Pobierz ">
+                                       <font>
+                                          <Font name="Lao MN" size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="50.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Button>
+                                    <ProgressBar fx:id="progressBar" prefHeight="21.0" prefWidth="193.0" progress="0.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="50.0" top="10.0" />
+                                       </VBox.margin>
+                                    </ProgressBar>
                                             </children>
                                         </VBox>
                                     </children>

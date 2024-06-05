@@ -1,52 +1,55 @@
 package com.example.moje_wydatki;
 
 import connect_db.ConnectionClass;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.chart.NumberAxis;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
+import javafx.stage.FileChooser;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.*;
 import java.util.ResourceBundle;
-
 
 
 public class BudgetController implements Initializable {
 
 
 
-    private ApplicationController Main;
-
-    public void setMain(ApplicationController main) {
-        this.Main = main;
-    }
-
-    @FXML
-    private LineChart<String, Number> barChart;
-
     @FXML
     private Label Amount_wallet;
 
-    @FXML
-    private Label error_label;
 
     @FXML
-    private TextField Amount;
+    private TextField Amount1;
 
     @FXML
     private Label status_label;
+
+    @FXML
+    private TextField monthly_amount;
+
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Button saveRaport;
+
+    private ApplicationController Main;
+
+    private MywalletController totalAmount;
+
 
     ConnectionClass connectionClass = new ConnectionClass();
     Connection connection = connectionClass.getConnection();
@@ -57,56 +60,28 @@ public class BudgetController implements Initializable {
 
     public void initialize(URL url, ResourceBundle rb) {
 
+        Main = new ApplicationController();
+        totalAmount = new MywalletController();
+
+        //Ukrycie paska posępu pobierania raportu
+        progressBar.setVisible(false);
 
 
         //Pobranie id_user z sesji
         SessionController session = SessionController.getInstance();
         int userId = session.getUserId();
 
-        //Tworzeni połączenie za bazą danych
-        ConnectionClass connectionClass = new ConnectionClass();
-        Connection connection = connectionClass.getConnection();
-
-        //Tworzenie zapytania SQL
-        String query = "SELECT amount, date FROM income_money WHERE id_user = ?";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        //Dodanie satnu portfela
+        double sumAmount = totalAmount.getTotalAmountForUser(userId);
+        Amount_wallet.setText("Stan portfela: " + sumAmount + "zł");
 
 
-        // Tworzenie serii danych
-        XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Suma pieniędzy w PLN");
-
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            double sumAmount = getTotalAmountForUser(userId);
-            Amount_wallet.setText("Twój budżet to: " + sumAmount);
-
-            while (resultSet.next()) {
-                double amount = resultSet.getDouble("amount");
-                LocalDate date = LocalDate.parse(resultSet.getString("date"), formatter);
-
-                //Wyciąganie miesiąca z daty w bazie danych
-                String month = date.getMonth().toString();
-                series.getData().add(new XYChart.Data<>(month, amount));
-
-            }
-
-            barChart.getData().add(series);
-
-            resultSet.close();
-            statement.close();
-            connection.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
     public void SaveAmountOnClick(ActionEvent event) {
 
-        String amount = Amount.getText();
+        String amount = Amount1.getText();
 
         //Tworzenie połączenia z bazą danych
         ConnectionClass connectionClass = new ConnectionClass();
@@ -125,7 +100,7 @@ public class BudgetController implements Initializable {
             return ;
         }
 
-        String query = "INSERT INTO income_money (id_user, amount, date) VALUES (?, ?, CURDATE())";
+        String query = "INSERT INTO income_money (id_user, amount, date, solary) VALUES (?, ?, CURDATE(), 0)";
 
         try{ PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, userId);
@@ -141,61 +116,189 @@ public class BudgetController implements Initializable {
 
     }
 
-    // Metoda, która oblicza łączną kwotę dla danego użytkownika
-    public double getTotalAmountForUser(int userId) {
 
-        double totalAmount = 0;
+    public void SaveMonthlyAmount(ActionEvent Event){
 
-        //Tworzenie zapytania SQL
-        String query2 = "SELECT SUM(amount) AS total_amount FROM income_money WHERE id_user = ?";
+        String amount = monthly_amount.getText();
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(query2);
+        String query = "INSERT INTO income_money (id_user, amount, date, solary) VALUES (?, ?, CURDATE(), 1)";
+
+
+
+        //Tworzenie połączenia z bazą danych
+        ConnectionClass connectionClass = new ConnectionClass();
+        Connection connection = connectionClass.getConnection();
+
+        if(amount.isEmpty()){
+            status_label.setText("Wpisz kwotę");
+            return;
+        }
+        double MonthlyAmount;
+
+        try{
+            MonthlyAmount = Double.parseDouble(amount);
+        }
+        catch (NumberFormatException e){
+            status_label.setText("Wprowadź poprawną kwotę");
+            return ;
+        }
+
+
+
+        try{ PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, userId);
+            statement.setDouble(2, MonthlyAmount);
+            statement.executeUpdate();
+            status_label.setText("Poprawnie wprowadzono kwotę do bazy danych!");
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            status_label.setText("Bląd zapisu!");
+        }
+
+    }
+
+    @FXML
+    public void SaveBudgetRaport(){
+
+        String query = "SELECT * FROM income_money WHERE id_user = ?";
+
+        //Tworzenie połączenia z bazą danych
+        ConnectionClass connectionClass = new ConnectionClass();
+        Connection connection = connectionClass.getConnection();
+
+        try{
+            //Połączenie z bazą danych i wykonanie zapytania
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, userId);
             ResultSet resultSet = statement.executeQuery();
 
+            // Tworzenie akrkusza za pomocą biblioteki Maven
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Raport budżet");
 
-            if (resultSet.next()) {
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("ID");
+            headerRow.createCell(1).setCellValue("Kwota");
+            headerRow.createCell(2).setCellValue("Data");
 
-                totalAmount = resultSet.getDouble("total_amount");
+            int rowIndex = 1;
 
+            // Dodawanie danych w pętli do arkusza
+            while(resultSet.next()){
+
+                progressBar.setVisible(true);
+                handleStart();
+                Row row = sheet.createRow(rowIndex++);
+                row.createCell(0).setCellValue(resultSet.getInt("id"));
+                row.createCell(1).setCellValue(resultSet.getDouble("amount"));
+                row.createCell(2).setCellValue(resultSet.getDate("date").toString());
             }
+            // Okno dialogowe do wyboru lokalizacji zapisu pliku
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Raport", "Raport.xlsx"));
+            File file = fileChooser.showSaveDialog(null);
 
+            if (file != null) {
+                try (FileOutputStream fileOut = new FileOutputStream(file)) {
+                    workbook.write(fileOut);
+                    status_label.setText("Plik Excel został zapisany pomyślnie.");
+                } catch (IOException e) {
+                    status_label.setText("Błąd podczas zapisywania pliku.");
+                    e.printStackTrace();
+                }
+            }
 
 
             resultSet.close();
             statement.close();
             connection.close();
+
         } catch (Exception e) {
             e.printStackTrace();
+            status_label.setText("Błąd podczas generowania raportu.");
         }
-        return totalAmount;
     }
 
+
+    public void handleStart() {
+        // Wyłączenie przycisku, aby uniknąć wielokrotnego uruchomienia
+        saveRaport.setDisable(true);
+
+        // Utworzenie zadania
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+
+                // Symulowanie zadania
+                for (int i = 0; i <= 30; i++) {
+                    Thread.sleep(30); // symulacja czasu przetwarzania
+                    updateProgress(i, 15);
+                }
+                return null;
+
+            }
+        };
+
+        // Ustawienie paska postępu do aktualizacji na podstawie zadania
+        progressBar.progressProperty().bind(task.progressProperty());
+
+        // Dodanie reakcji na zakończenie zadania
+        task.setOnSucceeded(e -> saveRaport.setDisable(false));
+        task.setOnFailed(e -> saveRaport.setDisable(false));
+
+        // Uruchomienie zadania w nowym wątku
+        new Thread(task).start();
+    }
+
+
+    @FXML
     public void budgetOnClick(MouseEvent event) {
 
 
+
         try {
-            Main.switchToBudgetScene("application-view-budget.fxml");
+            Main.switchToMainScene("application-view-budget.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
+    @FXML
     public void MyWalletOnClick(MouseEvent event) {
 
 
-        Main = new ApplicationController();
+
+        try {
+            Main.switchToMainScene("application-view-mywallet.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void ExpensesOnClick(MouseEvent event) {
 
 
         try {
-            Main.switchToMyWalletScene("application-view-mywallet.fxml");
+            Main.switchToMainScene("application-view-expenses.fxml");
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
+
+    @FXML
+    public void SettingsOnClick(MouseEvent event) {
+
+
+        try {
+            Main.switchToMainScene("application-view-settings.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
 

@@ -41,7 +41,7 @@
                   <VBox prefHeight="540.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                      <children>
                         <Separator prefWidth="200.0" />
-                        <Label fx:id="mywallet" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Mój portfel">
+                        <Label fx:id="mywallet" onMouseClicked="#handleLabelClickMyWallet" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Mój portfel">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -49,7 +49,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label fx:id="budget" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
+                        <Label fx:id="budget" onMouseClicked="#handleLabelClickBudget" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Budżet">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -57,7 +57,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label layoutX="10.0" layoutY="50.0" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
+                        <Label layoutX="10.0" layoutY="50.0" onMouseClicked="#handleLabelClickExpenses" prefHeight="40.0" prefWidth="235.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Wydatki">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -65,7 +65,7 @@
                               <Insets left="10.0" />
                            </VBox.margin>
                         </Label>
-                        <Label layoutX="10.0" layoutY="90.0" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
+                        <Label fx:id="settings" layoutX="10.0" layoutY="90.0" onMouseClicked="#handleLabelClickSettings" prefHeight="40.0" prefWidth="234.0" styleClass="mouse-moved" stylesheets="@css/styles.css" text="Ustawienia ">
                            <font>
                               <Font name="Lao MN" size="18.0" />
                            </font>
@@ -95,20 +95,13 @@
                                  </padding></Label>
                               <HBox prefHeight="100.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="268.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="302.0" fitWidth="592.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@img/AdobeStock_172201198.jpeg" />
+                                          <Image url="@img/AdobeStock_486093914.jpeg" />
                                        </image>
-                                    </ImageView>
-                                    <ImageView fitHeight="268.0" fitWidth="320.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@img/AdobeStock_172201198.jpeg" />
-                                       </image>
-                                    </ImageView>
-                                    <ImageView fitHeight="268.0" fitWidth="320.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@img/AdobeStock_172201198.jpeg" />
-                                       </image>
+                                       <HBox.margin>
+                                          <Insets left="300.0" />
+                                       </HBox.margin>
                                     </ImageView>
                                  </children>
                               </HBox>

@@ -4,9 +4,9 @@ package com.example.moje_wydatki;
 public class SessionController {
 
     private static SessionController instance;
-    private int userId;
+    public int userId;
 
-    private SessionController() {
+    public SessionController() {
         // Prywatny konstruktor, aby zapobiec tworzeniu nowych instancji
     }
 

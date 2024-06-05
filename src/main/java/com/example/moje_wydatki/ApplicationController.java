@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class ApplicationController extends javafx.application.Application {
 
@@ -18,55 +19,28 @@ public class ApplicationController extends javafx.application.Application {
 
         stg = primaryStage;
 
+
         // Wczytaj scneę logowania z pliku fxml
         primaryStage.setResizable(false);
         Parent root = FXMLLoader.load(getClass().getResource("login-view.fxml"));
+
         primaryStage.setTitle("Logowanie");
         primaryStage.setScene(new Scene(root, 1200,600));
         primaryStage.show();
-
-
 
     }
 
     public void switchToMainScene(String fxml) throws IOException{
 
-//
-//        // Wczytywanie głównej sceny aplikacji
+//        // Zmiana głównej sceny aplikacji
 
-        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        Parent pane = FXMLLoader.load((getClass().getResource(fxml)));
         stg.getScene().setRoot(pane);
         stg.setTitle("Moje wydatki");
 
 
 
     }
-
-    public void switchToBudgetScene(String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent pane = loader.load();
-
-        // Ustawienie kontrolera
-        BudgetController budgetController = loader.getController();
-        budgetController.setMain(this);
-
-        stg.getScene().setRoot(pane);
-        stg.setTitle("Moje wydatki");
-    }
-
-    public void switchToMyWalletScene(String fxml) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        Parent pane = loader.load();
-
-        // Ustawienie kontrolera
-        MywalletController mywalletController = loader.getController();
-        mywalletController.setMain(this);
-
-        stg.getScene().setRoot(pane);
-        stg.setTitle("Moje wydatki");
-    }
-
-
 
 
     public static void main(String[] args) {

@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,8 +18,6 @@ import java.sql.ResultSet;
 
 public class LoginController {
 
-    @FXML
-    private Button exit_button;
 
     @FXML
     private Label loginMessageLabel;
@@ -27,6 +27,7 @@ public class LoginController {
 
     @FXML
     private PasswordField passwordField;
+
 
 
     public void LoginButtonOnAction(ActionEvent event)
@@ -94,10 +95,11 @@ public class LoginController {
 
     }
 
+    @FXML
+    public void RegisterButtonOnAction(ActionEvent event) throws IOException {
 
-    public void exit_buttonOnAction(ActionEvent e) {
-        Stage stage = (Stage) exit_button.getScene().getWindow();
-        stage.close();
+        ApplicationController Main = new ApplicationController();
+        Main.switchToMainScene("register-view.fxml");
     }
 
 

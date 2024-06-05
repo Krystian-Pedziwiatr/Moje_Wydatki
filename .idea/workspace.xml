@@ -5,16 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eddf4643-b971-445d-a3a8-4e67956f5cda" name="Changes" comment="Start_v1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ExpensesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/RegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SettingsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-expenses.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-settings.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/register-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/MywalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/MywalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SessionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-mywallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-mywallet.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_172201198.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_323643497.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_350144560.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +83,10 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;22&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/krystian/IdeaProjects/Moje_Wydatki/src/main/resources/com/example/moje_wydatki&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -129,7 +141,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716929038851</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Start_v1">
+      <option name="closed" value="true" />
+      <created>1717173232546</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717173232546</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Start_v1">
+      <option name="closed" value="true" />
+      <created>1717173253629</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717173253629</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
