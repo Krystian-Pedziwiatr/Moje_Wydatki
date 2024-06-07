@@ -1,18 +1,12 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
 import connect_db.ConnectionClass;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.scene.chart.*;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 

@@ -1,4 +1,4 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
 import connect_db.ConnectionClass;
 import javafx.animation.PauseTransition;
@@ -11,7 +11,6 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 
 public class RegisterController {

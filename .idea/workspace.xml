@@ -5,28 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eddf4643-b971-445d-a3a8-4e67956f5cda" name="Changes" comment="Start_v1">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ExpensesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/RegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-expenses.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-settings.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/MywalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/MywalletController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/BudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/BudgetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ExpensesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/ExpensesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/MywalletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/MywalletController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/SessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/moje_wydatki/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moje_wydatki/ViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-mywallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-mywallet.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_172201198.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_323643497.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/AdobeStock_350144560.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-budget.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/application-view-budget.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-expenses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/application-view-expenses.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-mywallet.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/application-view-mywallet.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view-settings.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/application-view-settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/application-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/application-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/budget.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/img/budget.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/money-cash-icon-png.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/img/money-cash-icon-png.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/ssmvtnogc7ue0jufjd03h6mj89.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/img/ssmvtnogc7ue0jufjd03h6mj89.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/img/wallet.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/img/wallet.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/register-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,10 +86,10 @@
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;22&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/krystian/IdeaProjects/Moje_Wydatki/src/main/resources/com/example/moje_wydatki&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -94,8 +97,15 @@
       <recent name="$PROJECT_DIR$/src/main/resources/com/example/moje_wydatki" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/css" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/moje_wydatki/img" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/moje_wydatki" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/img" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.moje_wydatki" />
+      <recent name="com.example.moje_wydatki" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.moje_wydatki" />
@@ -103,7 +113,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Moje_Wydatki" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.example.moje_wydatki.ApplicationController" />
+      <option name="MAIN_CLASS_NAME" value="com.moje_wydatki.ApplicationController" />
       <module name="Moje_Wydatki" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -157,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717173253629</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Start_v1">
+      <option name="closed" value="true" />
+      <created>1717624073673</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1717624073673</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

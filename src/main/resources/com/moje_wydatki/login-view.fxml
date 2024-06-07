@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.moje_wydatki.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.moje_wydatki.LoginController">
    <children>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0">
          <children>
@@ -23,7 +23,7 @@
                <children>
                   <ImageView fitHeight="97.0" fitWidth="119.0" layoutX="73.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="50.0">
                      <image>
-                        <Image url="@./img/ssmvtnogc7ue0jufjd03h6mj89.png" />
+                        <Image url="@img/ssmvtnogc7ue0jufjd03h6mj89.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="80.0" layoutY="168.0" text="Witaj !" textFill="WHITE" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="168.0">

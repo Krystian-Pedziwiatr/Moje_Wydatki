@@ -1,4 +1,4 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
 import connect_db.ConnectionClass;
 import javafx.fxml.FXML;

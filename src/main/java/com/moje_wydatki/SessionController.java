@@ -1,4 +1,4 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
 
 public class SessionController {

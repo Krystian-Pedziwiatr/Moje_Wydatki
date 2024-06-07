@@ -1,6 +1,5 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,7 +7,6 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class ApplicationController extends javafx.application.Application {
 

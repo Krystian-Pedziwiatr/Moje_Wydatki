@@ -1,13 +1,11 @@
-package com.example.moje_wydatki;
+package com.moje_wydatki;
 
 import connect_db.ConnectionClass;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
